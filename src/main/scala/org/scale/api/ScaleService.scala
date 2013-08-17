@@ -1,12 +1,8 @@
 package org.scale.api
 
 import akka.actor.Actor
-import spray.routing._
-import spray.http.HttpResponse
-import spray.can.parsing.Result.Ok
-
-import scala.concurrent.{ExecutionContext, Future}
 import spray.httpx.marshalling.Marshaller
+import spray.routing._
 
 class ScaleService extends Actor with ScaleWebService {
 
@@ -18,7 +14,7 @@ class ScaleService extends Actor with ScaleWebService {
 
 
 
-trait ScaleWebService extends HttpService {
+trait ScaleWebService extends HttpService with AsyncSupport {
 
 
   val myRoute =
